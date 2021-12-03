@@ -1,0 +1,13 @@
+.login_image {
+    height: 100vh;    
+}
+
+.login_image_cont {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+}
+
+.login_cont {
+    width: 400px;
+}
