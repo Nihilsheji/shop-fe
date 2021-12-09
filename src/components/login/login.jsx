@@ -3,10 +3,35 @@ import { Container, Stack, Card, CardHeader, CardContent, TextField, Button, Typ
 import { Link } from 'react-router-dom';
 import './login.css';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
-
+import authService from "../../services/auth";
+import { Navigate } from "react-router-dom";
 export default class Login extends React.Component {
 
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        }
+    }    
+
+    onLogin = () => {
+        const username = "user";
+        const password = "pass";
+
+        const logged = authService.login({ username, password });
+
+        if(logged) {
+            this.setState({ redirect: true });
+        }
+
+        //show notification about incorrect data
+    }
+
+    render = () => {
+        const { redirect } = this.state;     
+
+        if(redirect) return <Navigate to="/products"/>;
+
         return (
             <Stack direction="row">
                 <Container style={{ minWidth: '400px', width: '400px', margin: 0, position: 'relative' }}>
@@ -39,7 +64,8 @@ export default class Login extends React.Component {
                                     style={{
                                         marginTop: '10px'
                                     }}
-                                    variant="outlined">
+                                    variant="outlined"
+                                    onClick={this.onLogin}>
                                     <DoubleArrowIcon/>
                                 </Button>
                                 <Typography 

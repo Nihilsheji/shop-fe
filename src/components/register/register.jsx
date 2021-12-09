@@ -79,7 +79,7 @@ export default class Register extends React.Component {
                                     variant="caption" 
                                     align="center" 
                                     style={{ marginTop: '10px' }}>
-                                    Masz już konto? <Link to="/register">Zaloguj się</Link>
+                                    Masz już konto? <Link to="/login">Zaloguj się</Link>
                                 </Typography>
 
                             </Stack>
